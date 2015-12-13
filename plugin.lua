@@ -28,7 +28,7 @@ function OnKilling(Victim, Killer, TDI)
   if (Victim:IsPlayer()) then
     --Ok so it a player 
     --Give a lighting bolt above to let the player know their stuff is saved
-    Victim:GetWorld():CastThunderbolt(Victim:GetPosition().x, (Victim:GetPosition().y + 3), Victim:GetPosition().z);
+    Victim:GetWorld():CastThunderbolt(Victim:GetPosition().x, Victim:GetPosition().y, Victim:GetPosition().z);
     --Build the chest and face no sure what ZM is yet...
     Victim:GetWorld():SetBlock(PlayerPos.x,(PlayerPos.y +2) , PlayerPos.z, E_BLOCK_CHEST, E_META_CHEST_FACING_ZM)
     --get the players items and copy them to a chest
