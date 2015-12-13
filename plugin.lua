@@ -12,7 +12,7 @@
 
 
 function Initialize(Plugin)
-	Plugin:SetName("Deathdrop")
+	Plugin:SetName("GraveChest")
 	Plugin:SetVersion(.1)
 
 	--Hook into the HOOK_KILLING to see when something is going to die
@@ -30,11 +30,12 @@ function OnKilling(Victim, Killer, TDI)
     --Give a lighting bolt above to let the player know their stuff is saved
     Victim:GetWorld():CastThunderbolt(Victim:GetPosition().x, Victim:GetPosition().y, Victim:GetPosition().z);
     --Build the chest and face no sure what ZM is yet...
-    Victim:GetWorld():SetBlock(PlayerPos.x,(PlayerPos.y +2) , PlayerPos.z, E_BLOCK_CHEST, E_META_CHEST_FACING_ZM)
+    Victim:GetWorld():SetBlock(Victim:GetPosition().x,(Victim:GetPosition().y +2) , Victim:GetPosition().z, E_BLOCK_CHEST, E_META_CHEST_FACING_ZM)
     --get the players items and copy them to a chest
     local Items = cItems()
-    Victim:GetInventory():CopyToItems(Items)
-    Victim:GetWorld():DoWithChestAt(PlayerPos.x,(PlayerPos.y +2) , PlayerPos.z,
+    local TESTVAR = Victim:GetInventory()
+    TESTVAR:CopyToItems(Items)
+    Victim:GetWorld():DoWithChestAt(Victim:GetPosition().x, (Victim:GetPosition().y +2), Victim:GetPosition().z,
 			function(a_Chest)
 				a_Chest:GetContents():AddItems(Items)
 			end)
